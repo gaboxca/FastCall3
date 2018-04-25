@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light"
+    tools:context="com.gaboxca.fastcall3.edit">
+
+    <Button
+        android:id="@+id/btn_marca1"
+        android:layout_width="152dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="108dp"
+        android:background="@drawable/borde_redondo"
+        android:text="VACÍO"
+        android:textAllCaps="false"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_marca2"
+        android:layout_width="152dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="108dp"
+        android:background="@drawable/borde_redondo"
+        android:text="VACÍO"
+        android:textAllCaps="false"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/btn_marca1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_marca3"
+        android:layout_width="152dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/borde_redondo"
+        android:text="VACÍO"
+        android:textAllCaps="false"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_marca1" />
+
+    <Button
+        android:id="@+id/btn_marca4"
+        android:layout_width="152dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/borde_redondo"
+        android:text="VACÍO"
+        android:textAllCaps="false"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/btn_marca3"
+        app:layout_constraintTop_toBottomOf="@+id/btn_marca2" />
+
+    <TextView
+        android:id="@+id/txt_titulo"
+        android:layout_width="238dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Seleccione botón a ser modificado"
+        android:textAlignment="center"
+        android:textColor="@color/naranja"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_nombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="256dp"
+        android:ems="10"
+        android:hint="NOMBRE"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:textColorHint="@android:color/darker_gray"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_tel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="TELÉFONO"
+        android:inputType="phone"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textColorHint="@android:color/darker_gray"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_nombre" />
+
+    <Button
+        android:id="@+id/btn_salvar"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/borde_redondo"
+        android:text="SALVAR"
+        android:textColor="@android:color/background_light"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_tel" />
+
+    <Button
+        android:id="@+id/btn_borrar"
+        android:layout_width="149dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/borde_redondo"
+        android:text="Borrar contacto"
+        android:textColor="@android:color/background_light"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/btn_salvar"
+        app:layout_constraintTop_toBottomOf="@+id/et_tel" />
+
+    <Button
+        android:id="@+id/btn_agenda"
+        android:layout_width="149dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/borde_redondo"
+        android:text="Copiar desde agenda"
+        android:textColor="@android:color/background_light"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_tel" />
+
+</android.support.constraint.ConstraintLayout>
