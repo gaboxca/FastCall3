@@ -1,10 +1,12 @@
 package com.gaboxca.fastcall3;
 
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -122,7 +124,6 @@ public class edit extends AppCompatActivity implements View.OnClickListener {
                 finish();
                 break;
             case R.id.btn_agenda:
-
 
                 break;
             default:
