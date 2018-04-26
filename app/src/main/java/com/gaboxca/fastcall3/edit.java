@@ -123,6 +123,7 @@ public class edit extends AppCompatActivity implements View.OnClickListener {
                 break;
             case R.id.btn_agenda:
 
+
                 break;
             default:
                 break;
@@ -177,6 +178,7 @@ public class edit extends AppCompatActivity implements View.OnClickListener {
         et_tel.setVisibility(v.getVisibility());
         btn_salvar.setVisibility(v.getVisibility());
         btn_borrar.setVisibility(v.getVisibility());
+        btn_agenda.setVisibility(v.getVisibility());
     }
 
     public void oculta(View v) {
