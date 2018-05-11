@@ -247,7 +247,7 @@ public class edit extends AppCompatActivity implements View.OnClickListener {
     private void getNameAndId(Uri uri){
         /*Valor a retornar el nombre */
         String name = null;
-        String telefono = null;
+        String telefono = "";
         int tel;
         /*Obtener una instancia del Content Resolver */
         ContentResolver contentResolver = getContentResolver();
@@ -264,9 +264,12 @@ public class edit extends AppCompatActivity implements View.OnClickListener {
 
 //        Cursor contactCursor = getContentResolver().query(uri, new String[] {ContactsContract.Contacts._ID},null,null,null);
 
-        Cursor contactCursor = getContentResolver().query(ContactsContract.Data.CONTENT_URI, new String[] {ContactsContract.CommonDataKinds.Phone.NUMBER},null,null,null);
+        String consulta = ContactsContract.Contacts.DISPLAY_NAME +" = '" + name + "'";
+
+        Cursor contactCursor = getContentResolver().query(ContactsContract.Data.CONTENT_URI, new String[] {ContactsContract.CommonDataKinds.Phone.NUMBER},consulta,null,null);
 
         if(contactCursor.moveToFirst()){
+            Log.d("Telefono primero: ",telefono);
             telefono = contactCursor.getString(0);
             Log.d("Telefono:",telefono);
             et_tel.setText(telefono);
