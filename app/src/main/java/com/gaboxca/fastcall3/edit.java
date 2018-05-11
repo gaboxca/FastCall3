@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,6 +28,8 @@ public class edit extends AppCompatActivity implements View.OnClickListener {
     EditText et_nombre;
     EditText et_tel;
     int id;
+    private static final int PICK_CONTACT_REQUEST = 1;
+    private Uri contactUri;
 
 
     // Variables BASE DE DATOS
@@ -124,7 +127,7 @@ public class edit extends AppCompatActivity implements View.OnClickListener {
                 finish();
                 break;
             case R.id.btn_agenda:
-
+                initLeerContactos();
                 break;
             default:
                 break;
@@ -217,6 +220,66 @@ public class edit extends AppCompatActivity implements View.OnClickListener {
             }while ( c_update.moveToNext());
         }
     }
+
+    public void initLeerContactos(){
+        /*Crea un intent para seleccionar un contacto del dispositivo */
+        Intent i = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+
+        /*
+        Iniciar la actividad esperando respuesta a travez del canal */
+
+        startActivityForResult(i,PICK_CONTACT_REQUEST);
+
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent){
+        if(requestCode == PICK_CONTACT_REQUEST){
+            if (resultCode == RESULT_OK){
+                /*Captura el valor de la Uri*/
+                contactUri = intent.getData();
+                getNameAndId(contactUri);
+                //Log.d("Params: ",getNameAndId(contactUri));
+                //et_nombre.setText(getNameAndId(contactUri));
+            }
+        }
+    }
+
+    private void getNameAndId(Uri uri){
+        /*Valor a retornar el nombre */
+        String name = null;
+        String telefono = null;
+        int tel;
+        /*Obtener una instancia del Content Resolver */
+        ContentResolver contentResolver = getContentResolver();
+
+        /*Consulta el nombre del contacto */
+        Cursor c = contentResolver.query(uri, new String[] {ContactsContract.Contacts.DISPLAY_NAME},null, null, null);
+
+        if (c.moveToFirst()){
+            name = c.getString(0);
+            et_nombre.setText(name);
+        }
+
+        /*Consulta el ID del contacto*/
+
+//        Cursor contactCursor = getContentResolver().query(uri, new String[] {ContactsContract.Contacts._ID},null,null,null);
+
+        Cursor contactCursor = getContentResolver().query(ContactsContract.Data.CONTENT_URI, new String[] {ContactsContract.CommonDataKinds.Phone.NUMBER},null,null,null);
+
+        if(contactCursor.moveToFirst()){
+            telefono = contactCursor.getString(0);
+            Log.d("Telefono:",telefono);
+            et_tel.setText(telefono);
+        }
+
+        /* Cerramos el cursor */
+        c.close();
+        contactCursor.close();
+
+//        return name;
+
+    }
+
 
 
 }
